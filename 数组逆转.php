@@ -4,33 +4,29 @@
 
 //使用array_reverse()函数会创建新的数组，所以不能使用。
 
-    $arr = array("a","b","c",1,10);
-    $i = "";//要替换位置的数的下标
-    $j = "";//临时变量
-    $k = "";//被替换位置的数的下标
+   $arr = array('a', 'b', 'c', 1, 10);
 
-    $len = count($arr);
+   $i = '';
+   $j = '';
+   $k = '';
 
-    $half_len = floor($len/2);
+   $len = count($arr);
+   $half_len = floor($len/2);
 
-    for ($i = 0; $i<$half_len; $i++) {
+   for ($i=0 ; $i < $half_len  ; $i++ ) { 
+       $j = $arr[$i];
 
-        $j = $arr[$i];
+       if ($len%2 != 0) {
+           $k = $half_len*2 -$i;
+       }else{
+        $k = $half_len*2 -$i -1;
+       }
 
-        if ($len%2!=0) {  //是len的长度不是half_len的长度
+       $arr[$i] = $arr[$k];
+       $arr[$k] = $j;
+   }
 
-            $k = $half_len*2-$i;
-
-        }else{
-
-            $k = $half_len*2-$i-1;
-        }
-
-
-
-            $arr[$i] = $arr[$k];
-            $arr[$k] = $j;
-    }
+   
 
     echo "<pre>";
     print_r($arr);
